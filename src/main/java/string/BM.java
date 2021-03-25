@@ -79,6 +79,11 @@ public class BM {
 		int k = m - 1 - j; // 好后缀长度
 		if (suffix[k] != -1)
 			return j - suffix[k] + 1;
+		/**
+		 * j是坏字符
+		 * j+1主要看匹配串的中间是否与主串的后串相等
+		 * >=j+2要看匹配串的前缀是否与主串的后串相等
+		 */
 		for (int r = j + 2; r <= m - 1; ++r) {
 			if (prefix[m - r] == true) {
 				return r;

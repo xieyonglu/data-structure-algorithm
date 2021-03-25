@@ -2,16 +2,23 @@ package sort;
 
 public class HeapSort {
 	
+	public static void main(String[] args) {
+		int[] array = new int[] { 34, 12, 3, 44, 89, 56, 120, 5, 0, 99, 33, 35 };
+
+		int[] result = heapSort(array);
+
+		for (int i = 0; i < result.length; i++) {
+			System.out.print(array[i] + " ");
+		}
+	}
+	
 	// 声明全局变量，用于记录数组array的长度；
 	static int len;
 
 	/**
 	 * 堆排序算法
-	 *
-	 * @param array
-	 * @return
 	 */
-	public static int[] HeapSort(int[] array) {
+	public static int[] heapSort(int[] array) {
 		len = array.length;
 		if (len < 1)
 			return array;
@@ -28,8 +35,6 @@ public class HeapSort {
 
 	/**
 	 * 建立最大堆
-	 *
-	 * @param array
 	 */
 	public static void buildMaxHeap(int[] array) {
 		// 从最后一个非叶子节点开始向上构造最大堆
@@ -40,9 +45,6 @@ public class HeapSort {
 
 	/**
 	 * 调整使之成为最大堆
-	 *
-	 * @param array
-	 * @param i
 	 */
 	public static void adjustHeap(int[] array, int i) {
 		int maxIndex = i;
@@ -55,16 +57,14 @@ public class HeapSort {
 		// 如果父节点不是最大值，则将父节点与最大值交换，并且递归调整与父节点交换的位置。
 		if (maxIndex != i) {
 			swap(array, maxIndex, i);
+			
+			// 调整父节点
 			adjustHeap(array, maxIndex);
 		}
 	}
 	
 	/**
 	 * 交换数组内两个元素
-	 * 
-	 * @param array
-	 * @param i
-	 * @param j
 	 */
 	public static void swap(int[] array, int i, int j) {
 		int temp = array[i];

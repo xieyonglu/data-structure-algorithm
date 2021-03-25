@@ -3,13 +3,21 @@ package sort;
 import java.util.Arrays;
 
 public class CountingSort {
+	
+	public static void main(String[] args) {
+		int[] array = new int[] { 34, 12, 3, 44, 89, 56, 120, 5, 0, 99, 33, 35 };
+
+		int[] result = countingSort(array);
+
+		for (int i = 0; i < result.length; i++) {
+			System.out.print(result[i] + " ");
+		}
+	}
+	
 	/**
 	 * 计数排序
-	 *
-	 * @param array
-	 * @return
 	 */
-	public static int[] CountingSort(int[] array) {
+	public static int[] countingSort(int[] array) {
 		if (array.length == 0)
 			return array;
 		int bias, min = array[0], max = array[0];
@@ -19,12 +27,15 @@ public class CountingSort {
 			if (array[i] < min)
 				min = array[i];
 		}
+		
+		// 偏移
 		bias = 0 - min;
 		int[] bucket = new int[max - min + 1];
 		Arrays.fill(bucket, 0);
 		for (int i = 0; i < array.length; i++) {
 			bucket[array[i] + bias]++;
 		}
+		
 		int index = 0, i = 0;
 		while (index < array.length) {
 			if (bucket[i] != 0) {
