@@ -1,13 +1,13 @@
 package string;
 
 public class KMP {
-	
+
 	public static void main(String[] args) {
 		String a = "abbcdef";
 		String b = "bc";
 		System.out.println(kmp(a, b));
 	}
-	
+
 	/**
 	 * a, b分别是主串和模式串；n,m分别是主串和模式串的长度。
 	 */
@@ -20,7 +20,7 @@ public class KMP {
 				j = next[j - 1] + 1;
 			}
 			if (a.charAt(i) == b.charAt(j))
-				++j;
+				j++;
 			if (j == b.length())
 				return i - b.length() + 1; // 找到匹配模式串的了
 		}
@@ -34,12 +34,12 @@ public class KMP {
 		int[] next = new int[b.length()];
 		next[0] = -1;
 		int k = -1;
-		for (int i = 1; i < b.length(); ++i) {
+		for (int i = 1; i < b.length(); i++) {
 			while (k != -1 && b.charAt(k + 1) != b.charAt(i)) {
 				k = next[k];
 			}
 			if (b.charAt(k + 1) == b.charAt(i))
-				++k;
+				k++;
 			next[i] = k;
 		}
 		return next;

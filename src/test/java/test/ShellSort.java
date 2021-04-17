@@ -17,12 +17,11 @@ public class ShellSort {
 		while (gap > 0) {
 			for (int i = gap; i < nums.length; i++) {
 				for (int j = i; j >= gap && nums[j - gap] > nums[j]; j = j - gap) {
-					int temp = nums[j];
-					nums[j] = nums[j - gap];
-					nums[j - gap] = temp;
+					int temp = nums[j - gap];
+					nums[j - gap] = nums[j];
+					nums[j] = temp;
 				}
 			}
-
 			gap = gap / 2;
 		}
 	}

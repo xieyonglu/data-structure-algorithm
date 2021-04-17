@@ -16,7 +16,6 @@ public class HeapSort {
 
 	public static void heapSort(int[] nums) {
 		LENGTH = nums.length;
-
 		buildMaxHeap(nums);
 
 		while (LENGTH > 0) {
@@ -38,6 +37,7 @@ public class HeapSort {
 			maxIndex = 2 * index;
 		if (2 * index + 1 < LENGTH && nums[2 * index + 1] > nums[maxIndex])
 			maxIndex = 2 * index + 1;
+
 		if (index != maxIndex) {
 			swap(nums, index, maxIndex);
 			adjustHeap(nums, maxIndex);
